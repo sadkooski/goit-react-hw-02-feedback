@@ -1,5 +1,4 @@
-import { FeedbackTemplate } from './Feedback/Feedback';
-import { state } from './Feedback/Feedback';
+import FeedbackTemplate from './Feedback/Feedback.jsx';
 
 export const App = () => {
   return (
@@ -13,7 +12,7 @@ export const App = () => {
         color: '#010101',
       }}
     >
-      <FeedbackTemplate feedback={state} />
+      <FeedbackTemplate />
     </div>
   );
 };
