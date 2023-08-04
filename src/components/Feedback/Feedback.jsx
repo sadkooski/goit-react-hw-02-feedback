@@ -1,4 +1,3 @@
-// import PropTypes from 'prop-types';
 import './Feedback.css';
 import React, { Component } from 'react';
 import { Statistics } from 'components/Statistics/Statistics';
@@ -21,20 +20,22 @@ class FeedbackTemplate extends Component {
 
   buttonOnClick = e => {
     e.preventDefault();
-    for (const key in this.state) {
-      if (key === e.currentTarget.dataset.variant) {
-        this.setState({
-          key: (this.state[key] += 1),
-        });
+    const variant = e.currentTarget.dataset.variant;
+    this.setState(
+      prevState => ({
+        [variant]: prevState[variant] + 1,
+      }),
+      () => {
+        this.countPositiveFeedbackPercentage();
+        this.countTotalFeedback();
       }
-    }
-    this.countPositiveFeedbackPercentage();
-    this.countTotalFeedback();
+    );
   };
 
   countTotalFeedback = () => {
+    const { good, neutral, bad } = this.state;
     this.setState({
-      total: this.state.good + this.state.neutral + this.state.bad,
+      total: good + neutral + bad,
     });
   };
 
@@ -46,15 +47,14 @@ class FeedbackTemplate extends Component {
     }
   };
 
-  notificationVisibility = total => {
-    total = this.state.total;
-    if (total > 0) {
-    }
+  notificationVisibility = () => {
+    const { total } = this.state;
+    return total === 0;
   };
 
   render() {
     return (
-      <div class="feedback">
+      <div className="feedback">
         <Section title="Please leave feedback"></Section>
         <FeedbackOptions onLeaveFeedback={this.buttonOnClick} />
         <Section title="Statistics"></Section>

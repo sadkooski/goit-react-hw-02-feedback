@@ -1,7 +1,7 @@
 export const FeedbackOptions = ({ onLeaveFeedback }) => {
   return (
     <ul className="buttons-list">
-      <li class="button-element">
+      <li className="button-element">
         <button
           onClick={onLeaveFeedback}
           type="submit"
@@ -11,7 +11,7 @@ export const FeedbackOptions = ({ onLeaveFeedback }) => {
           Good
         </button>
       </li>
-      <li class="button-element">
+      <li className="button-element">
         <button
           onClick={onLeaveFeedback}
           type="submit"
@@ -21,7 +21,7 @@ export const FeedbackOptions = ({ onLeaveFeedback }) => {
           Neutral
         </button>
       </li>
-      <li class="button-element">
+      <li className="button-element">
         <button
           onClick={onLeaveFeedback}
           type="submit"
